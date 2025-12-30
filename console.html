@@ -1,0 +1,554 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tangoline.Inc-Console</title>
+<link rel="apple-touch-icon" sizes="180x180" href="fav icon/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="16x16" href="fav icon/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="fav icon/android-chrome-192x192.png">
+<link rel="manifest" href="fav icon/android-chrome-192x192.png">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="Assets/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+
+
+<style>
+body{
+  background:#000;
+  color:#fff;
+  font-family:Arial, Helvetica, sans-serif;
+}
+.title{
+  text-align:center;
+  margin:40px 0;
+  color:yellow;
+  text-shadow:0 0 15px yellow;
+}
+.console-card{
+  background:#111;
+  border:2px solid yellow;
+  border-radius:15px;
+  overflow:hidden;
+  transition:0.3s;
+  cursor:pointer;
+}
+.console-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 25px yellow;
+}
+.console-card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+.console-card .card-body{
+  background:#000;
+}
+.console-card h5{
+  color:yellow;
+}
+.btn-console{
+  background:yellow;
+  color:#000;
+  font-weight:bold;
+  border:none;
+}
+.btn-console:hover{
+  background:#000;
+  color:yellow;
+  border:1px solid yellow;
+}
+ 
+
+.hero img{
+  max-width:350px;
+  filter:drop-shadow(0 0 25px yellow);
+}
+h1{ color:yellow; text-shadow:0 0 15px yellow; }
+.spec-box{
+  border:2px solid yellow;
+  border-radius:15px;
+  padding:20px;
+  background:#111;
+}
+.btn-yellow{
+  background:yellow;
+  color:#000;
+  font-weight:bold;
+}
+.btn-yellow:hover{
+  background:#000;
+  color:yellow;
+  border:1px solid yellow;
+}
+</style>
+
+</head>
+
+<body id="bg-img">
+
+  <div id="loader">
+    <div class="loader-logo">TANGO-LINE</div>
+    <div class="loader-line"></div>
+  </div>
+
+    
+        <header>
+            <nav class="navbar navbar-expand-lg fixed-top left-0 right-0 bg-dark bg-opacity-25">
+  
+
+    
+    <a class="navbar-brand logo" href="index.html">
+      <img src="Assets/images/web-logo.png" alt="Logo" class="logo">
+    </a>
+
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent" style="background: yellow;">
+      <span class="navbar-toggler-icon" style="background-color: yellow;"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      
+      <div class="w-100">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-3 d-flex justify-content-end text-center" >
+          <li class="nav-item"><a class="nav-link " href="index.html" style="color: yellow;"><b>HOME</b></a></li>
+          <li class="nav-item"><a class="nav-link " href="abouts.html" style="color: yellow;"><b>ABOUT</b></a></li>
+          <li class="nav-item"><a class="nav-link " href="contacts.html" style="color: yellow;"><b>CONTACT</b></a></li>
+          <li class="nav-item"><a class="nav-link " href="console.html" style="color: yellow;"><b>CONSOLES</b></a></li>
+          <li class="nav-item"><a class="nav-link " href="games.html" style="color: yellow;"><b>GAMES</b></a></li>
+          <li class="nav-item"><a class="nav-link " href="companies.html" style="color: yellow;"><b>BRANDS</b></a></li>
+          <li class="nav-item"><a class="nav-link " href="compare.html" style="color: yellow;"><b>COMPARE</b></a></li>
+        </ul>
+
+        <div class="row me-1" >
+          <div class="col-7 offset-3 rounded-5">
+            <form class="input-group rounded-5" style="background: yellow;" >
+              <input type="text" id="searchInput" autocomplete="off" oninput="showSuggestions()" class="form-control text-dark rounded-5"placeholder="Search games, consoles, categories..." style="background-color: yellow;" >
+
+              <button class="btn rounded-5" style="background-color: yellow;" id="blanksubmit">
+                <i class="fa fa-search text-dark "></i>
+              </button>
+               <ul id="suggestions" class="suggestion-box"></ul>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+    </header>
+
+
+
+    
+ <div class="video-wrapper">
+  <video src="Assets/videos/consoles.mp4"autoplay muted loop playsinline class="topfixed">
+  </video>
+</div> 
+
+
+<div class="container">
+  <h1 class="title">Gaming Consoles</h1>
+  <div class="row g-4" id="consoleContainer" data-aos="zoom-out-up" data-aos-offset="300"></div>
+</div>
+</div>
+
+
+<section class="glow-text my-5 text-center"  >
+  <img src="Assets/images/ps5.jpg" alt="PlayStation 5" width="90%" class="rounded-5">
+  <h1 class="mt-4">PlayStation 5</h1>
+  <p>Next-Gen Gaming Console by Sony</p>
+</section>
+
+<div class="container my-5">
+  <div class="row g-4">
+    
+    <div class="col-md-6">
+      <div class="spec-box rounded-5">
+        <h4 style="color:yellow;">Specifications</h4>
+        <ul class="glow-text">
+          <li>CPU: AMD Ryzen Zen 2</li>
+          <li>GPU: RDNA 2</li>
+          <li>Storage: 825GB Ultra-Fast SSD</li>
+          <li>Resolution: Up to 8K</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="spec-box rounded-5">
+        <h4 style="color:yellow;">Features</h4>
+        <ul class="glow-text">
+          <li>Ultra-fast loading</li>
+          <li>Ray Tracing</li>
+          <li>DualSense Haptic Feedback</li>
+          <li>PlayStation Exclusive Games</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="text-center mt-5 d-flex gap-5 justify-content-center">
+    <a href="compare.html" class="btn btn-yellow px-2 py-5 rounded-circle">Compare Now</a>
+    <a href="playstation.html" class="btn btn-yellow px-2 py-5 rounded-circle">All--Consoles</a>
+
+  </div>
+</div>
+
+
+
+<section class="glow-text my-5 text-center ">
+  <img src="Assets/images/xbox.jpg" alt="Xbox Series X"  width="90%" class="rounded-5">
+  <h1 class="mt-4">Xbox Series X</h1>
+  <p>Power your dreams with next-gen performance</p>
+</section>
+
+<div class="container my-5">
+  <div class="row g-4">
+    
+    <div class="col-md-6">
+      <div class="spec-box rounded-5">
+        <h4 style="color:yellow;">Specifications</h4>
+        <ul class="glow-text">
+          <li>CPU: AMD Ryzen Zen 2</li>
+          <li>GPU: RDNA 2 (12 TFLOPS)</li>
+          <li>Storage: 1TB NVMe SSD</li>
+          <li>Resolution: Up to 8K</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="spec-box rounded-5">
+        <h4 style="color:yellow;">Features</h4>
+        <ul class="glow-text">
+          <li>Quick Resume</li>
+          <li>120 FPS Gaming</li>
+          <li>Xbox Game Pass</li>
+          <li>Backward Compatibility</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="text-center mt-5 d-flex gap-5 justify-content-center">
+    <a href="compare.html" class="btn btn-yellow px-2 py-5 rounded-circle">Compare Now</a>
+    <a href="xbox.html" class="btn btn-yellow px-2 py-5 rounded-circle">All--Consoles</a>
+  </div>
+</div>
+
+<section class="glow-text my-5 text-center">
+  <img src="Assets/images/switch.jpg" alt="Nintendo Switch"  width="90%" class=" rounded-5">
+  <h1 class="mt-4">Nintendo Switch</h1>
+  <p>Hybrid Gaming Console by Nintendo</p>
+</section>
+
+<div class="container my-5">
+  <div class="row g-4">
+    
+    <div class="col-md-6">
+      <div class="spec-box rounded-5">
+        <h4 style="color:yellow;">Specifications</h4>
+        <ul class="glow-text">
+          <li>CPU/GPU: NVIDIA Tegra Processor</li>
+          <li>Storage: 32GB Internal</li>
+          <li>Modes: TV, Tabletop & Handheld</li>
+          <li>Resolution: Up to 1080p</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="spec-box rounded-5">
+        <h4 style="color:yellow;">Features</h4>
+        <ul class="glow-text">
+          <li>Hybrid Console Design</li>
+          <li>Joy-Con Controllers</li>
+          <li>Local & Online Multiplayer</li>
+          <li>Exclusive Nintendo Games</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="text-center mt-5 d-flex gap-5 justify-content-center">
+    <a href="compare.html" class="btn btn-yellow px-2 py-5 rounded-circle">Compare Now</a>
+    <a href="switch.html" class="btn btn-yellow px-2 py-5 rounded-circle">All--Consoles</a>
+  </div>
+</div>
+<section class="glow-text my-5 text-center">
+  <img src="Assets/images/sega-saturn.jpg" alt="Sega Console" width="90%" class="rounded-5">
+  <h1 class="mt-4">Sega Genesis</h1>
+  <p class="lead">Classic Home Gaming Console by Sega</p>
+</section>
+
+<div class="container my-5">
+  <div class="row g-4">
+    
+    <div class="col-md-6">
+      <div class="spec-box p-3 shadow rounded rounded-5">
+        <h4 class="glow-text">Specifications</h4>
+        <ul class="glow-text">
+          <li>CPU: Motorola 68000</li>
+          <li>Sound: Yamaha YM2612 FM Synthesizer</li>
+          <li>Storage: Cartridge-based Games</li>
+          <li>Resolution: Up to 320x224 pixels</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="spec-box p-3 shadow rounded-5">
+        <h4 class="glow-text">Features</h4>
+        <ul class="glow-text">
+          <li>Classic 16-bit Console</li>
+          <li>Multiplayer Support</li>
+          <li>Iconic Sega Games Library</li>
+          <li>Expandable with Accessories</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="text-center mt-5 mb-5 d-flex gap-5 justify-content-center">
+    <a href="compare.html" class="btn btn-yellow px-2 py-5 rounded-circle">Compare Now</a>
+    <a href="sega.html" class="btn btn-yellow px-2 py-5 rounded-circle">All--Consoles</a>
+  </div>
+</div>
+
+
+
+  <footer class=" pt- pb-4 mt-5 border-glow fixed-start fixed-end bg-dark" data-aos="fade-up" data-aos-offset="250">
+    
+      <div class="row gy-4">
+        <div class="col-12 col-md-3 mt-5 ps-5">
+          <img src="Assets/images/web-logo.png" width="150px" alt="" class="ms-5 ms-md-0 ps-5 ps-md-0">
+          <p class="glow-text fs-6">
+            TangoLine is an online community of Vedio Games enthusiasts.
+            <strong>Join now</strong> to share and explore tons of collections of Games, consoles.
+          </p>
+        </div>
+        <div class="col-6 col-md-3 pt-4">
+          <h5 class="fw-bold top-border-glow text-center  pb-2 glow-text">Info</h5>
+          <ul class="list-unstyled mt-3 text-center">
+           <li><a href="abouts.html" class="py-2 text-decoration-none" style="color: yellow;">About Us</a></li>
+            <li><a href="contacts.html" class="py-2 text-decoration-none" style="color: yellow;">Contact Us</a></li>
+            <li><a href="compare.html" class="py-2 text-decoration-none" style="color: yellow;">Compare</a></li>
+        <li><a href="companies.html" class="py-2 text-decoration-none" style="color: yellow;">Brands</a></li>
+          </ul>
+        </div>             
+        <div class="col-6 col-md-3 pt-4">
+          <h5 class="fw-bold  pb-2 glow-text top-border-glow text-center">Consoles</h5>
+          <ul class="list-unstyled mt-3 text-center">
+            <li><a href="playstation.html" class="py-2 text-decoration-none" style="color: yellow;">PlayStation</a></li>
+            <li><a href="xbox.html" class="py-2 text-decoration-none" style="color: yellow;">Xbox</a></li>
+            <li><a href="switch.html" class="py-2 text-decoration-none" style="color: yellow;">Switch</a></li>
+            <li><a href="sega.html" class="py-2 text-decoration-none" style="color: yellow;">Sega</a></li>
+         
+          </ul>
+        </div>
+           <div class="col-6 col-md-3 pt-4">
+          <h5 class="fw-bold  pb-2 glow-text top-border-glow text-center">Follow Us</h5>
+          <ul class="list-unstyled mt-3 text-center">
+            <li><a href="" class="py-2 text-decoration-none" style="color: yellow;">Facebook <img src="Assets/images/facebook-logo.png" style="width: 40px; height: 40px; border-radius: 50%;" alt=""></a></li>
+            <li><a href="" class="py-2 text-decoration-none" style="color: yellow;">Twitter <img src="Assets/images/twitter-logo.png" style="width: 55px; height: 55px;" alt="" srcset=""></a></li>
+            <li><a href="" class="py-2 text-decoration-none" style="color: yellow;">Instagram <img src="Assets/images/instagram-logo-.png" style="width: 40px; height: 40px; border-radius: 50%;" alt=""></a></li>
+         
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-center top-border-glow" style="color: yellow; margin-top: 35px;">
+        Copyright © TangoLine 2015 - 2026. All Right Reserved.
+      </div>
+
+    </div>
+  </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <script src="Assets/js/main.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+const consoles = [
+  {
+    name:"PlayStation 5",
+    img:"Assets/images/ps5.jpg",
+    desc:"Next-Gen console by Sony",
+    link:"playstation.html"
+  },
+  {
+    name:"Xbox Series X",
+    img:"Assets/images/xbox.jpg",
+    desc:"Power your dreams",
+    link:"xbox.html"
+  },
+  {
+    name:"Nintendo Switch",
+    img:"Assets/images/switch.jpg",
+    desc:"Play anywhere, anytime",
+    link:"switch.html"
+  },
+  {
+    name:"Sega Saturn",
+    img:"Assets/images/sega-saturn.jpg",
+    desc:"Classic retro console",
+    link:"sega.html"
+  }
+];
+
+const box = document.getElementById("consoleContainer");
+
+consoles.forEach(c=>{
+  box.innerHTML += `
+  <div class="col-md-6 col-lg-3">
+    <div class="console-card h-100" onclick="openPage('${c.link}')">
+      <img src="${c.img}">
+      <div class="card-body text-center">
+        <h5>${c.name}</h5>
+        <p>${c.desc}</p>
+        <button class="btn btn-console w-100">View</button>
+      </div>
+    </div>
+  </div>`;
+});
+
+
+
+function openPage(page){
+  window.location.href = page;
+}
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html> 

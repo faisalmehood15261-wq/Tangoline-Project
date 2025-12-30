@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>T-L-Playstation-Consoles</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="fav icon/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="fav icon/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="fav icon/android-chrome-192x192.png">
+  <link rel="manifest" href="fav icon/android-chrome-192x192.png">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="Assets/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+</head>
+
+<body id="bg-img">
+
+  <div id="loader">
+    <div class="loader-logo">TANGO-LINE</div>
+    <div class="loader-line"></div>
+  </div>
+
+  <div class="container-fluid">
+        <header>
+            <nav class="navbar navbar-expand-lg fixed-top left-0 right-0 bg-dark bg-opacity-25">
+  
+
+    
+    <a class="navbar-brand logo" href="index.html">
+      <img src="Assets/images/web-logo.png" alt="Logo" class="logo">
+    </a>
+
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent" style="background: yellow;">
+      <span class="navbar-toggler-icon" style="background-color: yellow;"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      
+      <div class="w-100">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-3 d-flex justify-content-end text-center" >
+          <li class="nav-item"><a class="nav-link " href="index.html" style="color: yellow;"><b>HOME</b></a></li>
+          <li class="nav-item"><a class="nav-link " href="abouts.html" style="color: yellow;"><b>ABOUT</b></a></li>
+          <li class="nav-item"><a class="nav-link " href="contacts.html" style="color: yellow;"><b>CONTACT</b></a></li>
+          <li class="nav-item"><a class="nav-link " href="console.html" style="color: yellow;"><b>CONSOLES</b></a></li>
+          <li class="nav-item"><a class="nav-link " href="games.html" style="color: yellow;"><b>GAMES</b></a></li>
+          <li class="nav-item"><a class="nav-link " href="companies.html" style="color: yellow;"><b>BRANDS</b></a></li>
+          <li class="nav-item"><a class="nav-link " href="compare.html" style="color: yellow;"><b>COMPARE</b></a></li>
+        </ul>
+
+        <div class="row me-1" >
+          <div class="col-7 offset-3 rounded-5">
+            <form class="input-group rounded-5" style="background: yellow;" >
+              <input type="text" id="searchInput" autocomplete="off" oninput="showSuggestions()" class="form-control text-dark rounded-5"placeholder="Search games, consoles, categories..." style="background-color: yellow;" >
+
+              <button class="btn rounded-5" style="background-color: yellow;" id="blanksubmit">
+                <i class="fa fa-search text-dark "></i>
+              </button>
+               <ul id="suggestions" class="suggestion-box"></ul>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+    </header>
+
+ <div class="video-wrapper">
+  <video src="Assets/videos/pp.mp4"autoplay muted loop playsinline class="topfixed">
+  </video>
+</div> 
+
+
+
+<div class="container my-5">
+  <h2 class="text-center mb-4 glow-text fs-1" data-aos="fade-up" data-aos-duration="3000">Playstation - Consoles</h2>
+  <div class="row" id="cardsContainer" data-aos="fade-up" data-aos-duration="3000"></div>
+</div>
+  </div>
+
+  <footer class=" pt- pb-4 mt-5 border-glow fixed-start fixed-end bg-dark" data-aos="fade-up" data-aos-offset="250">
+    
+      <div class="row gy-4">
+        <div class="col-12 col-md-3 mt-5 ps-5">
+          <img src="Assets/images/web-logo.png" width="150px" alt="" class="ms-5 ms-md-0 ps-5 ps-md-0">
+          <p class="glow-text fs-6">
+            TangoLine is an online community of Vedio Games enthusiasts.
+            <strong>Join now</strong> to share and explore tons of collections of Games, consoles.
+          </p>
+        </div>
+        <div class="col-6 col-md-3 pt-4">
+          <h5 class="fw-bold top-border-glow text-center  pb-2 glow-text">Info</h5>
+          <ul class="list-unstyled mt-3 text-center">
+           <li><a href="abouts.html" class="py-2 text-decoration-none" style="color: yellow;">About Us</a></li>
+            <li><a href="contacts.html" class="py-2 text-decoration-none" style="color: yellow;">Contact Us</a></li>
+            <li><a href="compare.html" class="py-2 text-decoration-none" style="color: yellow;">Compare</a></li>
+        <li><a href="companies.html" class="py-2 text-decoration-none" style="color: yellow;">Brands</a></li>
+          </ul>
+        </div>             
+        <div class="col-6 col-md-3 pt-4">
+          <h5 class="fw-bold  pb-2 glow-text top-border-glow text-center">Consoles</h5>
+          <ul class="list-unstyled mt-3 text-center">
+            <li><a href="playstation.html" class="py-2 text-decoration-none" style="color: yellow;">PlayStation</a></li>
+            <li><a href="xbox.html" class="py-2 text-decoration-none" style="color: yellow;">Xbox</a></li>
+            <li><a href="switch.html" class="py-2 text-decoration-none" style="color: yellow;">Switch</a></li>
+            <li><a href="sega.html" class="py-2 text-decoration-none" style="color: yellow;">Sega</a></li>
+         
+          </ul>
+        </div>
+           <div class="col-6 col-md-3 pt-4">
+          <h5 class="fw-bold  pb-2 glow-text top-border-glow text-center">Follow Us</h5>
+          <ul class="list-unstyled mt-3 text-center">
+            <li><a href="" class="py-2 text-decoration-none" style="color: yellow;">Facebook <img src="Assets/images/facebook-logo.png" style="width: 40px; height: 40px; border-radius: 50%;" alt=""></a></li>
+            <li><a href="" class="py-2 text-decoration-none" style="color: yellow;">Twitter <img src="Assets/images/twitter-logo.png" style="width: 55px; height: 55px;" alt="" srcset=""></a></li>
+            <li><a href="" class="py-2 text-decoration-none" style="color: yellow;">Instagram <img src="Assets/images/instagram-logo-.png" style="width: 40px; height: 40px; border-radius: 50%;" alt=""></a></li>
+         
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-center top-border-glow" style="color: yellow; margin-top: 35px;">
+        Copyright © TangoLine 2015 - 2026. All Right Reserved.
+      </div>
+
+    </div>
+  </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="Assets/js/main.js"></script>
+ <script>
+const consoles = [
+  {n:"PlayStation 5", i:"Assets/images/ps5.jpg", d:"Next-gen console with ultra-fast SSD.", p:"$499", r:5},
+  {n:"PlayStation 5 Digital", i:"Assets/images/ps5pro.jpg", d:"Disc-free PS5 with blazing-fast downloads.", p:"$399", r:5},
+  {n:"PlayStation 4", i:"Assets/images/ps4.jpg", d:"Classic PS4 with large game library.", p:"$299", r:4},
+  {n:"PlayStation 4 Pro", i:"Assets/images/ps4-pro.jpg", d:"Enhanced 4K visuals and improved performance.", p:"$399", r:4},
+  {n:"PlayStation 4 Slim", i:"Assets/images/ps4-slim.jpg", d:"Compact and stylish PS4 variant.", p:"$299", r:4},
+  {n:"PlayStation 3", i:"Assets/images/ps3.jpg", d:"Classic console with Blu-ray support.", p:"$199", r:4},
+  {n:"PlayStation 2", i:"Assets/images/ps2.jpg", d:"Iconic console with timeless games.", p:"$149", r:5},
+  {n:"PlayStation 2 Slim", i:"Assets/images/ps2-slim.jpg", d:"Slim redesign of PS2 for compact gaming.", p:"$159", r:5}
+];
+
+const docFile = "Assets/docs/Game_Consoles_Documentation (1).docx"; 
+const c = document.getElementById("cardsContainer");
+
+consoles.forEach(x => c.innerHTML += `
+  <div class="col-md-6 mb-4">
+    <div class="card h-100 shadow">
+      <img src="${x.i}" class="card-img-top" alt="${x.n}">
+      <div class="card-body">
+        <h5 class="card-title">${x.n}</h5>
+        <p class="card-text">${x.d}</p>
+        <p class="card-text">
+          <strong>Price:</strong> ${x.p} | 
+          <strong>Rating:</strong> <span class="rating">${x.r} &#9733;</span>
+        </p>
+        <a href="${docFile}" download class="btn btn-dark mt-2">Download</a>
+      </div>
+    </div>
+  </div>
+`);
+
+document.querySelectorAll(".card-body").forEach(card => {
+  card.style.backgroundColor = "yellow";
+});
+
+</script>
+
+</body>
+
+</html>

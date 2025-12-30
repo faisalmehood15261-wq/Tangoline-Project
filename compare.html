@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TangoLine-Compare</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="fav icon/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="fav icon/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="fav icon/android-chrome-192x192.png">
+  <link rel="manifest" href="fav icon/android-chrome-192x192.png">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="Assets/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+ <style>
+  .compare-theme {
+  background: linear-gradient(135deg, #0b0b0b, #121212);
+  border: 2px solid #FFD700;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,.7);
+  color: #FFD700;
+}
+
+.compare-theme h1,
+.compare-theme h3 {
+  color: #FFD700;
+  text-shadow: 0 0 10px rgba(255,215,0,.6);
+}
+
+.compare-theme .card {
+  background: #111;
+  border: 2px solid rgba(255,215,0,.4);
+  border-radius: 16px;
+  color: #FFD700;
+  transition: .3s ease;
+}
+
+.compare-theme .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 25px rgba(255,215,0,.3);
+}
+
+.compare-theme .form-select {
+  background: #FFD700;
+  color: #000;
+  font-weight: 700;
+  border-radius: 12px;
+  border: none;
+width: 100%;
+}
+
+.compare-theme .btn {
+  background: #FFD700;
+  color: #000;
+  font-weight: 800;
+  border-radius: 50px;
+  transition: .3s ease;
+}
+
+.compare-theme .btn:hover {
+  background: #ffea70;
+  transform: translateY(-3px);
+}
+
+.compare-theme .result {
+  min-height: 120px;
+  border: 2px dashed rgba(255,215,0,.4);
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+}
+
+.compare-theme #diffList li {
+  background: #111;
+  color: #FFD700;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,215,0,.3);
+}
+
+ </style>
+</head>
+
+<body id="bg-img">
+
+  <div id="loader">
+    <div class="loader-logo">TANGO-LINE</div>
+    <div class="loader-line"></div>
+  </div>
+    
+        <header>
+            <nav class="navbar navbar-expand-lg fixed-top left-0 right-0 bg-dark bg-opacity-25">
+  
+
+    
+    <a class="navbar-brand logo" href="index.html">
+      <img src="Assets/images/web-logo.png" alt="Logo" class="logo">
+    </a>
+
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent" style="background: yellow;">
+      <span class="navbar-toggler-icon" style="background-color: yellow;"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      
+      <div class="w-100">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-3 d-flex justify-content-end text-center" >
+          <li class="nav-item"><a class="nav-link " href="index.html" style="color: yellow;"><b>HOME</b></a></li>
+          <li class="nav-item"><a class="nav-link " href="abouts.html" style="color: yellow;"><b>ABOUT</b></a></li>
+          <li class="nav-item"><a class="nav-link " href="contacts.html" style="color: yellow;"><b>CONTACT</b></a></li>
+          <li class="nav-item"><a class="nav-link " href="console.html" style="color: yellow;"><b>CONSOLES</b></a></li>
+          <li class="nav-item"><a class="nav-link " href="games.html" style="color: yellow;"><b>GAMES</b></a></li>
+          <li class="nav-item"><a class="nav-link " href="companies.html" style="color: yellow;"><b>BRANDS</b></a></li>
+          <li class="nav-item"><a class="nav-link " href="compare.html" style="color: yellow;"><b>COMPARE</b></a></li>
+        </ul>
+
+        <div class="row me-1" >
+          <div class="col-7 offset-3 rounded-5">
+            <form class="input-group rounded-5" style="background: yellow;" >
+              <input type="text" id="searchInput" autocomplete="off" oninput="showSuggestions()" class="form-control text-dark rounded-5"placeholder="Search games, consoles, categories..." style="background-color: yellow;" >
+
+              <button class="btn rounded-5" style="background-color: yellow;" id="blanksubmit">
+                <i class="fa fa-search text-dark "></i>
+              </button>
+               <ul id="suggestions" class="suggestion-box"></ul>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+    </header>
+    
+    <div style="object-fit: cover; display: block; top: 0;" class="position-relative">
+        <img src="Assets/images/compare-baner.png" width="100%" class="height">
+        <div class="d-flex gap-3 position-absolute top-50 start-50 translate-middle fs-5">
+            <a href="index.html" class="text-decoration-none glow-text">Home</a>
+            <a href="" class="text-decoration-none glow-text">/</a>
+            <a href="console.html" class="text-decoration-none glow-text">Games</a>
+        </div>
+    </div>
+
+
+
+
+  <section class="py-5 text-center bg-dark glow-text mx-3 my-5  rounded-4" style="border: 2px dashed yellow;" data-aos="fade-up" data-aos-offset="200">
+    <div class="container" >
+      <h1 class="display-5 " >Comparison-Page</h1>
+      <p class="lead">!
+        “Discover the ultimate gaming showdown — Compare the world's top consoles side by side!”
+        “Your guide to the best consoles: Specs, features, and top games in one place.”
+        “From PlayStation to Xbox, Nintendo to Sega — find your perfect gaming match.”
+        PlayStation: “Experience immersive gaming with cutting-edge graphics, innovative controllers, and top-tier exclusive titles.”
+        Xbox: “Powerful performance, backward compatibility, and a vast library of games for every type of gamer.”
+        Nintendo Switch: “Play anywhere, anytime — a hybrid console for home and handheld gaming adventures.”
+        Sega: “Retro classics and modern hits — iconic consoles that shaped gaming history.”! 
+      </p>
+    </div>
+  </section>
+
+
+
+<h1 class="text-center my-4 glow-text fs-1" data-aos="fade-left" data-aos-offset="200">Consoles Comparison</h1>
+
+<div class="container p-5 rounded-4 compare-theme" data-aos="fade-zoom-in"
+     data-aos-easing="ease-in-back" data-aos-delay="300" data-aos-offset="0">
+
+  <div class="row g-3">
+    <h1 class="text-center fs-3">Comparison Tool</h1>
+
+    <div class="col-12 col-md-6">
+      <div class="card p-3 h-100">
+        <select id="p1" class="form-select mb-3">
+          <option value="" selected disabled class="text-center">Select Console</option>
+        </select>
+
+        <button class="btn w-100 mb-3" onclick="compare()">Compare</button>
+        <div class="result" id="r1"></div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6">
+      <div class="card p-3 h-100">
+        <select id="p2" class="form-select mb-3">
+          <option value="" selected disabled  class="text-center">Select Console</option>
+        </select>
+
+        <button class="btn w-100 mb-3" onclick="resetCompare()">Reset</button>
+        <div class="result" id="r2"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container my-5 p-5 compare-theme" id="compareArea">
+  <div class="row g-3">
+    <div class="col-12 col-md-6">
+      <div class="card p-3 h-100" id="c1"></div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="card p-3 h-100" id="c2"></div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-12">
+      <h3 class="text-center">Key Differences</h3>
+      <ul id="diffList" class="list-group list-unstyled text-center"></ul>
+    </div>
+  </div>
+</div>
+
+
+
+   <footer class=" pt- pb-4 mt-5 border-glow fixed-start fixed-end bg-dark" data-aos="fade-up" data-aos-offset="250">
+    
+      <div class="row gy-4">
+        <div class="col-12 col-md-3 mt-5 ps-5">
+          <img src="Assets/images/web-logo.png" width="150px" alt="" class="ms-5 ms-md-0 ps-5 ps-md-0">
+          <p class="glow-text fs-6">
+            TangoLine is an online community of Vedio Games enthusiasts.
+            <strong>Join now</strong> to share and explore tons of collections of Games, consoles.
+          </p>
+        </div>
+        <div class="col-6 col-md-3 pt-4">
+          <h5 class="fw-bold top-border-glow text-center  pb-2 glow-text">Info</h5>
+          <ul class="list-unstyled mt-3 text-center">
+           <li><a href="abouts.html" class="py-2 text-decoration-none" style="color: yellow;">About Us</a></li>
+            <li><a href="contacts.html" class="py-2 text-decoration-none" style="color: yellow;">Contact Us</a></li>
+            <li><a href="compare.html" class="py-2 text-decoration-none" style="color: yellow;">Compare</a></li>
+        <li><a href="companies.html" class="py-2 text-decoration-none" style="color: yellow;">Brands</a></li>
+          </ul>
+        </div>             
+        <div class="col-6 col-md-3 pt-4">
+          <h5 class="fw-bold  pb-2 glow-text top-border-glow text-center">Consoles</h5>
+          <ul class="list-unstyled mt-3 text-center">
+            <li><a href="playstation.html" class="py-2 text-decoration-none" style="color: yellow;">PlayStation</a></li>
+            <li><a href="xbox.html" class="py-2 text-decoration-none" style="color: yellow;">Xbox</a></li>
+            <li><a href="switch.html" class="py-2 text-decoration-none" style="color: yellow;">Switch</a></li>
+            <li><a href="sega.html" class="py-2 text-decoration-none" style="color: yellow;">Sega</a></li>
+         
+          </ul>
+        </div>
+           <div class="col-6 col-md-3 pt-4">
+          <h5 class="fw-bold  pb-2 glow-text top-border-glow text-center">Follow Us</h5>
+          <ul class="list-unstyled mt-3 text-center">
+            <li><a href="" class="py-2 text-decoration-none" style="color: yellow;">Facebook <img src="Assets/images/facebook-logo.png" style="width: 40px; height: 40px; border-radius: 50%;" alt=""></a></li>
+            <li><a href="" class="py-2 text-decoration-none" style="color: yellow;">Twitter <img src="Assets/images/twitter-logo.png" style="width: 55px; height: 55px;" alt="" srcset=""></a></li>
+            <li><a href="" class="py-2 text-decoration-none" style="color: yellow;">Instagram <img src="Assets/images/instagram-logo-.png" style="width: 40px; height: 40px; border-radius: 50%;" alt=""></a></li>
+         
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-center top-border-glow" style="color: yellow; margin-top: 35px;">
+        Copyright © TangoLine 2015 - 2026. All Right Reserved.
+      </div>
+
+    </div>
+  </footer>
+
+               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="Assets/js/main.js"></script>
+
+   
+
+
+<script>
+const consoles = {
+
+  
+  ps5:{
+    n:"PlayStation 5", y:2020, g:"9th Gen", p:"$499",
+    manufacturer:"Sony Interactive Entertainment",
+    features:"Ultra-fast SSD, Ray Tracing, 4K Gaming, DualSense Haptics",
+    topGames:"Spider-Man 2, God of War Ragnarok, Horizon Forbidden West",
+    img:"Assets/images/ps5.jpg"
+  },
+  ps5de:{
+    n:"PlayStation 5 Digital Edition", y:2020, g:"9th Gen", p:"$399",
+    manufacturer:"Sony Interactive Entertainment",
+    features:"All-digital, Ultra-fast SSD, Ray Tracing",
+    topGames:"Demon's Souls, Ratchet & Clank Rift Apart",
+    img:"Assets/images/ps5pro.jpg"
+  },
+  ps4:{
+    n:"PlayStation 4", y:2013, g:"8th Gen", p:"$399",
+    manufacturer:"Sony Interactive Entertainment",
+    features:"HDR Gaming, Blu-ray, Strong Exclusives",
+    topGames:"The Last of Us Part II, Bloodborne",
+    img:"Assets/images/ps4.jpg"
+  },
+  ps4pro:{
+    n:"PlayStation 4 Pro", y:2016, g:"8th Gen", p:"$399",
+    manufacturer:"Sony Interactive Entertainment",
+    features:"4K Upscaling, Boost Mode",
+    topGames:"God of War, Spider-Man",
+    img:"Assets/images/ps4-pro.jpg"
+  },
+  ps4slim:{
+    n:"PlayStation 4 Slim", y:2016, g:"8th Gen", p:"$299",
+    manufacturer:"Sony Interactive Entertainment",
+    features:"Slim Design, HDR Support",
+    topGames:"Horizon Zero Dawn, Days Gone",
+    img:"Assets/images/ps4-slim.jpg"
+  },
+  ps3:{
+    n:"PlayStation 3", y:2006, g:"7th Gen", p:"$599",
+    manufacturer:"Sony Computer Entertainment",
+    features:"Blu-ray Player, Cell Processor",
+    topGames:"The Last of Us, Uncharted 2",
+    img:"Assets/images/ps3.jpg"
+  },
+  ps2:{
+    n:"PlayStation 2", y:2000, g:"6th Gen", p:"$299",
+    manufacturer:"Sony Computer Entertainment",
+    features:"DVD Playback, Massive Game Library",
+    topGames:"GTA San Andreas, God of War II",
+    img:"Assets/images/ps2.jpg"
+  },
+
+ps2slim:{
+  n:"PlayStation 2 Slim", y:2004, g:"6th Gen", p:"$199",
+  manufacturer:"Sony Computer Entertainment",
+  features:"Slim Design, DVD Playback",
+  topGames:"GTA San Andreas, Final Fantasy X",
+  img:"Assets/images/ps2-slim.jpg"
+},
+  xbox:{
+    n:"Xbox (Original)", y:2001, g:"6th Gen", p:"$299",
+    manufacturer:"Microsoft",
+    features:"Built-in HDD, Xbox Live",
+    topGames:"Halo Combat Evolved",
+    img:"Assets/images/xbox.jpg"
+  },
+  x360:{
+    n:"Xbox 360", y:2005, g:"7th Gen", p:"$299",
+    manufacturer:"Microsoft",
+    features:"HD Gaming, Xbox Live Arcade",
+    topGames:"Halo 3, Gears of War",
+    img:"Assets/images/xbox360.jpg"
+  },
+  x360e:{
+    n:"Xbox 360 Elite", y:2007, g:"7th Gen", p:"$479",
+    manufacturer:"Microsoft",
+    features:"HDMI Support, Larger HDD",
+    topGames:"Forza Motorsport 4, Halo Reach",
+    img:"Assets/images/xbox360-elite.jpg"
+  },
+  x1:{
+    n:"Xbox One", y:2013, g:"8th Gen", p:"$499",
+    manufacturer:"Microsoft",
+    features:"Media Center, Kinect Support",
+    topGames:"Halo 5, Sunset Overdrive",
+    img:"Assets/images/xbox-one.jpg"
+  },
+  x1s:{
+    n:"Xbox One S", y:2016, g:"8th Gen", p:"$299",
+    manufacturer:"Microsoft",
+    features:"Slim Design, HDR",
+    topGames:"Forza Horizon 4",
+    img:"Assets/images/xbox-one-s.jpg"
+  },
+  x1x:{
+    n:"Xbox One X", y:2017, g:"8th Gen", p:"$499",
+    manufacturer:"Microsoft",
+    features:"True 4K Gaming",
+    topGames:"Red Dead Redemption 2",
+    img:"Assets/images/xbox-one-x.jpg"
+  },
+  xss:{
+    n:"Xbox Series S", y:2020, g:"9th Gen", p:"$299",
+    manufacturer:"Microsoft",
+    features:"All-digital, 1440p Gaming",
+    topGames:"Forza Horizon 5",
+    img:"Assets/images/xbox-series-s.jpg"
+  },
+  xsx:{
+    n:"Xbox Series X", y:2020, g:"9th Gen", p:"$499",
+    manufacturer:"Microsoft",
+    features:"4K 120FPS, Ray Tracing",
+    topGames:"Starfield, Halo Infinite",
+    img:"Assets/images/xbox-series-x.jpg"
+  },
+  switch:{
+    n:"Nintendo Switch", y:2017, g:"8th Gen", p:"$299",
+    manufacturer:"Nintendo",
+    features:"Hybrid Console",
+    topGames:"Zelda BOTW, Mario Odyssey",
+    img:"Assets/images/switch.jpg"
+  },
+  switcholed:{
+    n:"Nintendo Switch OLED", y:2021, g:"8th Gen", p:"$349",
+    manufacturer:"Nintendo",
+    features:"OLED Display, Better Audio",
+    topGames:"Zelda Tears of the Kingdom",
+    img:"Assets/images/switch-oled.jpg"
+  },
+  switchlite:{
+    n:"Nintendo Switch Lite", y:2019, g:"8th Gen", p:"$199",
+    manufacturer:"Nintendo",
+    features:"Handheld Only",
+    topGames:"Animal Crossing",
+    img:"Assets/images/switch-lite.jpg"
+  },
+  wii:{
+    n:"Wii", y:2006, g:"7th Gen", p:"$249",
+    manufacturer:"Nintendo",
+    features:"Motion Controls",
+    topGames:"Wii Sports, Mario Galaxy",
+    img:"Assets/images/wii.jpg"
+  },
+  wiiu:{
+    n:"Wii U", y:2012, g:"8th Gen", p:"$349",
+    manufacturer:"Nintendo",
+    features:"GamePad Controller",
+    topGames:"Mario Kart 8",
+    img:"Assets/images/wii-u.jpg"
+  },
+  gamecube:{
+    n:"GameCube", y:2001, g:"6th Gen", p:"$199",
+    manufacturer:"Nintendo",
+    features:"Compact Disc Media",
+    topGames:"Super Smash Bros Melee",
+    img:"Assets/images/gamecube.jpg"
+  },
+  n64:{
+    n:"Nintendo 64", y:1996, g:"5th Gen", p:"$199",
+    manufacturer:"Nintendo",
+    features:"3D Gaming Pioneer",
+    topGames:"Super Mario 64",
+    img:"Assets/images/n64.jpg"
+  },
+  snes:{
+    n:"SNES", y:1990, g:"4th Gen", p:"$199",
+    manufacturer:"Nintendo",
+    features:"16-bit Graphics",
+    topGames:"Super Mario World",
+    img:"Assets/images/snes.jpg"
+  },
+  mastersystem:{
+    n:"Sega Master System", y:1985, g:"3rd Gen", p:"$199",
+    manufacturer:"Sega",
+    features:"8-bit Gaming",
+    topGames:"Alex Kidd",
+    img:"Assets/images/sega-master-system.jpg"
+  },
+  genesis:{
+    n:"Sega Genesis / Mega Drive", y:1988, g:"4th Gen", p:"$189",
+    manufacturer:"Sega",
+    features:"16-bit Gaming",
+    topGames:"Sonic the Hedgehog",
+    img:"Assets/images/sega-genesis.jpg"
+  },
+  saturn:{
+    n:"Sega Saturn", y:1994, g:"5th Gen", p:"$399",
+    manufacturer:"Sega",
+    features:"CD-Based Gaming",
+    topGames:"Nights into Dreams",
+    img:"Assets/images/sega-saturn.jpg"
+  },
+  dreamcast:{
+    n:"Sega Dreamcast", y:1998, g:"6th Gen", p:"$199",
+    manufacturer:"Sega",
+    features:"Online Gaming",
+    topGames:"Shenmue",
+    img:"Assets/images/sega-dreamcast.jpg"
+  },
+  sg1000:{
+  n:"Sega SG-1000", y:1983, g:"3rd Gen", p:"$150",
+  manufacturer:"Sega",
+  features:"8-bit Console, Cartridge-based",
+  topGames:"Congo Bongo",
+  img:"Assets/images/sega-sg1000.png"
+},
+sc3000:{
+  n:"Sega SC-3000", y:1983, g:"3rd Gen", p:"$199",
+  manufacturer:"Sega",
+  features:"Home Computer & Console",
+  topGames:"Tennis",
+  img:"Assets/images/sega-sc3000.jpg"
+},
+mark3:{
+  n:"Sega Mark III", y:1985, g:"3rd Gen", p:"$199",
+  manufacturer:"Sega",
+  features:"Japanese Version of Master System",
+  topGames:"Alex Kidd in Miracle World",
+  img:"Assets/images/sega-mark-iii.jpg"
+},
+teradrive:{
+  n:"Sega TeraDrive", y:1990, g:"4th Gen", p:"$699",
+  manufacturer:"Sega",
+  features:"PC + Console Hybrid",
+  topGames:"Sega Mega Drive games",
+  img:"Assets/images/sega-teradrive.jpg"
+},
+
+};
+
+
+const p1=document.getElementById("p1");
+const p2=document.getElementById("p2");
+
+Object.keys(consoles).forEach(k=>{
+  p1.innerHTML+=`<option value="${k}">${consoles[k].n}</option>`;
+  p2.innerHTML+=`<option value="${k}">${consoles[k].n}</option>`;
+});
+
+
+function compare(){
+  if(p1.value===""||p2.value===""){
+    alert("Please select both products.");
+    return;
+  }
+  if(p1.value===p2.value){
+    alert("Same products cannot be compared.");
+    return;
+  }
+
+  const a=consoles[p1.value];
+  const b=consoles[p2.value];
+
+  r1.innerText=a.n;
+  r2.innerText=b.n;
+
+  c1.innerHTML=card(a);
+  c2.innerHTML=card(b);
+
+  diffList.innerHTML=`
+    <li>Release Year: ${a.y} vs ${b.y}</li>
+    <li>Generation: ${a.g} vs ${b.g}</li>
+    <li>Price: ${a.p} vs ${b.p}</li>
+  `;
+
+  compareArea.style.display="block";
+}
+
+function card(d){
+  return `
+    <img src="${d.img}">
+    <h3>${d.n}</h3>
+    <p><b>Manufacturer:</b> ${d.manufacturer}</p>
+    <p><b>Features:</b> ${d.features}</p>
+    <p><b>Top Games:</b> ${d.topGames}</p>
+    <p><b>Release:</b> ${d.y}</p>
+    <p><b>Generation:</b> ${d.g}</p>
+    <p><b>Price:</b> ${d.p}</p>
+  `;
+}
+
+
+
+function resetCompare() {
+
+  document.getElementById("p1").selectedIndex = 0;
+  document.getElementById("p2").selectedIndex = 0;
+
+  document.getElementById("r1").innerHTML = "";
+  document.getElementById("r2").innerHTML = "";
+  document.getElementById("c1").innerHTML = "";
+  document.getElementById("c2").innerHTML = "";
+  document.getElementById("diffList").innerHTML = "";
+
+  const area = document.getElementById("compareArea");
+  area.style.display = "none";
+}
+document.getElementById("compareArea").style.display = "none";
+
+
+
+
+
+</script> 
+</body>
+
+</html>
